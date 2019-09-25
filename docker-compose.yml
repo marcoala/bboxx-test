@@ -4,6 +4,7 @@ services:
   python:
     build: .
     volumes:
-      - .:/data
-      - .:/results
-      - .:/scripts
+      - ./data:/workingdir/data
+      - ./results:/workingdir/results
+      - ./scripts:/workingdir/scripts
+      - ./modules:/workingdir/modules
