@@ -5,6 +5,10 @@ KNIGHT_STATUSES = {
 }
 
 
+class KnightIsDeadError(Exception):
+    pass
+
+
 class Knight:
 
     def __init__(self, name, x, y):
@@ -14,6 +18,8 @@ class Knight:
         self.status = KNIGHT_STATUSES["LIVE"]
 
     def move(self, direction):
+        if self.status != KNIGHT_STATUSES["LIVE"]:
+            raise KnightIsDeadError
         if direction == 'N':
             self.y = self.y - 1
         elif direction == 'S':

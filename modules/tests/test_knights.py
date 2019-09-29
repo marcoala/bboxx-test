@@ -1,6 +1,6 @@
 import pytest
 
-from modules.knights import Knight, KNIGHT_STATUSES
+from modules.knights import Knight, KNIGHT_STATUSES, KnightIsDeadError
 
 
 def test_Knight_creation():
@@ -31,3 +31,14 @@ def test_Knight_drowning():
     for _ in range(5):
         knight.move('N')
     assert knight.status == KNIGHT_STATUSES["DROWNED"], (knight.x, knight.y)
+
+
+def test_Knight_move_only_if_alive():
+    knight = Knight('A', 3, 4)
+    for _ in range(5):
+        knight.move('N')
+    assert knight.status == KNIGHT_STATUSES["DROWNED"], (knight.x, knight.y)
+
+    with pytest.raises(KnightIsDeadError):
+        knight.move('N')
+
