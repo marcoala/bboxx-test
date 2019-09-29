@@ -1,4 +1,4 @@
-from modules.items import Knight, GameItem
+from modules.knights import KNIGHT_STATUSES, Knight, GameItem, fight
 
 
 def test_GameItem_creation():
@@ -23,3 +23,10 @@ def test_Knight_equip_GameItem():
     assert knight.attack == 2
     assert knight.defence == 2
 
+
+def test_fight_attacker_advantage():
+    red = Knight('A', 3, 4)
+    blue = Knight('B', 2, 4)
+    fight(red, blue)
+    assert red.status == KNIGHT_STATUSES["LIVE"]
+    assert blue.status == KNIGHT_STATUSES["DEAD"]

@@ -15,5 +15,5 @@ docker-compose run --rm python python scripts/main.py
 |Run the tests
 
 ```bash
-docker-compose run --rm python python -m pytest
+docker-compose run --rm python python -m pytest -v
 ```

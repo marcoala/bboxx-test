@@ -1,8 +1,10 @@
 KNIGHT_STATUSES = {
-    "LIVE": "LIVE",
+    "LIVE": "LIVE",  # this should probably be ALIVE
     "DEAD": "DEAD",
     "DROWNED": "DROWNED",
 }
+
+SURPRISE_ELEMENT = 0.5
 
 
 class KnightIsDeadError(Exception):
@@ -54,9 +56,23 @@ class Knight(GameObject):
             return self._base_defence + self.item.defence
         return self._base_defence
 
+    def die(self):
+        self.drop_item()
+        self.status = KNIGHT_STATUSES["DEAD"]
+
+    def drop_item(self):
+        pass
+
 
 class GameItem(GameObject):
     def __init__(self, name, x, y, attack=0, defence=0):
         super().__init__(name, x, y)
         self.attack = attack
         self.defence = defence
+
+
+def fight(attacker, defender):
+    if attacker.attack + SURPRISE_ELEMENT > defender.defence:
+        defender.die()
+    if attacker.attack + SURPRISE_ELEMENT < defender.defence:
+        attacker.die()
