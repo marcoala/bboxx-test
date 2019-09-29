@@ -1,6 +1,6 @@
 import pytest
 
-from modules.knights import Knight
+from modules.knights import Knight, KNIGHT_STATUSES
 
 
 def test_Knight_creation():
@@ -24,3 +24,10 @@ def test_Knight_move(direction, expected_x, expected_y):
     knight.move(direction)
     assert knight.x == expected_x
     assert knight.y == expected_y
+
+
+def test_Knight_drowning():
+    knight = Knight('A', 3, 4)
+    for _ in range(5):
+        knight.move('N')
+    assert knight.status == KNIGHT_STATUSES["DROWNED"], (knight.x, knight.y)
