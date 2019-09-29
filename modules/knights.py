@@ -33,3 +33,12 @@ class Knight:
     def _check_drowing(self):
         if self.x < 0 or self.x > 7 or self.y < 0 or self.y > 7:
             self.status = KNIGHT_STATUSES["DROWNED"]
+
+
+class GameItem:
+    def __init__(self, name, x, y, attack=0, defence=0):
+        self.name = name
+        self.x = x
+        self.y = y
+        self.attack = attack
+        self.defence = defence
