@@ -41,3 +41,9 @@ def test_Knight_move_only_if_alive():
 
     with pytest.raises(KnightIsDeadError):
         knight.move('N')
+
+
+def test_Knight_attack_and_defence():
+    knight = Knight('A', 3, 4)
+    assert knight.attack == 1
+    assert knight.defence == 1

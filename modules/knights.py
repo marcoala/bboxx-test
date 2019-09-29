@@ -17,6 +17,9 @@ class GameObject:
 
 
 class Knight(GameObject):
+    item = None
+    _base_attack = 1
+    _base_defence = 1
 
     def __init__(self, name, x, y):
         super().__init__(name, x, y)
@@ -38,6 +41,18 @@ class Knight(GameObject):
     def _check_drowing(self):
         if self.x < 0 or self.x > 7 or self.y < 0 or self.y > 7:
             self.status = KNIGHT_STATUSES["DROWNED"]
+
+    @property
+    def attack(self):
+        if self.item:
+            return self._base_attack + self.item.attack
+        return self._base_attack
+
+    @property
+    def defence(self):
+        if self.item:
+            return self._base_defence + self.item.defence
+        return self._base_defence
 
 
 class GameItem(GameObject):
