@@ -41,4 +41,3 @@ def test_Knight_move_only_if_alive():
 
     with pytest.raises(KnightIsDeadError):
         knight.move('N')
-

@@ -9,12 +9,17 @@ class KnightIsDeadError(Exception):
     pass
 
 
-class Knight:
-
+class GameObject:
     def __init__(self, name, x, y):
         self.name = name
         self.x = x
         self.y = y
+
+
+class Knight(GameObject):
+
+    def __init__(self, name, x, y):
+        super().__init__(name, x, y)
         self.status = KNIGHT_STATUSES["LIVE"]
 
     def move(self, direction):
@@ -35,10 +40,8 @@ class Knight:
             self.status = KNIGHT_STATUSES["DROWNED"]
 
 
-class GameItem:
+class GameItem(GameObject):
     def __init__(self, name, x, y, attack=0, defence=0):
-        self.name = name
-        self.x = x
-        self.y = y
+        super().__init__(name, x, y)
         self.attack = attack
         self.defence = defence
