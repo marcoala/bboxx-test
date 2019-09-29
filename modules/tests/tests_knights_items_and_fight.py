@@ -10,6 +10,12 @@ def test_GameItem_creation():
     assert item.defence == 1
 
 
+def test_Knight_attack_and_defence():
+    knight = Knight('A', 3, 4)
+    assert knight.attack == 1
+    assert knight.defence == 1
+
+
 def test_Knight_equip_GameItem():
     item = GameItem('M', 5, 2, 1, 1)
     knight = Knight('A', 3, 4)
