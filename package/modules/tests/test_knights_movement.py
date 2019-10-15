@@ -1,6 +1,6 @@
 import pytest
 
-from modules.knights import Knight, KNIGHT_STATUSES, KnightIsDeadError
+from package.modules.knights import Knight, KNIGHT_STATUSES, KnightIsDeadError
 
 
 def test_Knight_creation():

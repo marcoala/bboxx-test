@@ -9,7 +9,10 @@ docker-compose build
 Run the main script
 
 ```bash
-docker-compose run --rm python python scripts/main.py
+docker-compose run --rm python python package/main.py
+
+# to specify an input file
+docker-compose run --rm python python package/main.py data/example_moves.txt
 ```
 
 Run the tests

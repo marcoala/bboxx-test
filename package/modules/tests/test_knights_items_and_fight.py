@@ -1,4 +1,4 @@
-from modules.knights import KNIGHT_STATUSES, Knight, GameItem, fight
+from package.modules.knights import KNIGHT_STATUSES, Knight, GameItem, fight
 
 
 def test_GameItem_creation():

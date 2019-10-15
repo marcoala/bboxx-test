@@ -6,5 +6,4 @@ services:
     volumes:
       - ./data:/workingdir/data
       - ./results:/workingdir/results
-      - ./scripts:/workingdir/scripts
-      - ./modules:/workingdir/modules
+      - ./package:/workingdir/package
