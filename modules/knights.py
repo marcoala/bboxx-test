@@ -17,6 +17,10 @@ class GameObject:
         self.x = x
         self.y = y
 
+    @property
+    def position(self):
+        return self.x, self.y
+
 
 class Knight(GameObject):
     item = None
@@ -59,6 +63,9 @@ class Knight(GameObject):
     def die(self):
         self.drop_item()
         self.status = KNIGHT_STATUSES["DEAD"]
+
+    def equip_item(self, item):
+        self.item = item
 
     def drop_item(self):
         pass
