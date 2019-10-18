@@ -24,7 +24,7 @@ class Game:
         return [
             position,
             knight.status,
-            knight.item or 'null',
+            str(knight.item) if knight.item else 'null',
             knight.attack,
             knight.defence
         ]
@@ -53,9 +53,15 @@ class Game:
         knight_name = chunks[0]
         direction = chunks[1]
         knight = self.knights[knight_name]
-        print(move)
-        print(knight.x)
-        print(knight.y)
         knight.move(direction)
-        print(knight.x)
-        print(knight.y)
+
+        # pick up items
+        for _, item in self.items.items():
+            if _ == 'A':
+                print(_)
+                print(knight.position)
+                print(item.position)
+                print(knight.position == item.position)
+            if not item.equipped and knight.position == item.position:
+                knight.equip_item(item)
+

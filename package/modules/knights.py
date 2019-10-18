@@ -21,6 +21,9 @@ class GameObject:
     def position(self):
         return self.y, self.x
 
+    def __str__(self):
+        return self.name
+
 
 class Knight(GameObject):
     item = None
@@ -30,6 +33,11 @@ class Knight(GameObject):
     def __init__(self, name, y, x):
         super().__init__(name, y, x)
         self.status = KNIGHT_STATUSES["LIVE"]
+
+    def _update_item_position(self):
+        if self.item:
+            self.item.y = self.y
+            self.item.x = self.x
 
     def move(self, direction):
         if self.status != KNIGHT_STATUSES["LIVE"]:
@@ -43,10 +51,13 @@ class Knight(GameObject):
         elif direction == 'W':
             self.x = self.x - 1
         self._check_drowing()
+        if self.status == KNIGHT_STATUSES["LIVE"]:
+            self._update_item_position()
 
     def _check_drowing(self):
         if self.x < 0 or self.x > 7 or self.y < 0 or self.y > 7:
             self.status = KNIGHT_STATUSES["DROWNED"]
+            self.drop_item()
 
     @property
     def attack(self):

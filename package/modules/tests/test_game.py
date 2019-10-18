@@ -31,3 +31,59 @@ def test_Game_drown_kingt():
         "red": ['null', "DROWNED", "null", 1, 1],
         "yellow": ['null', "DROWNED", "null", 1, 1],
     }
+
+
+def test_Game_drown_scenario_1():
+    """
+    Scenario:
+    Red pick up the Axe then drown
+
+    Expected results:
+    Red is DROWNED, the position is null
+    Axe position is the last valide Red position
+    Everthing else is the same
+    """
+    game = Game()
+    game.execute_move('R:S')
+    game.execute_move('R:S')
+    game.execute_move('R:E')
+    game.execute_move('R:E')
+    game.execute_move('R:E')
+    game.execute_move('R:W')
+    game.execute_move('R:W')
+    game.execute_move('R:W')
+    game.execute_move('R:W')
+    assert game.get_result() == {
+        "axe": [[(2, 0)], False],
+        "blue": [[(7, 0)], "LIVE", "null", 1, 1],
+        "dagger": [[(2, 5)], False],
+        "green": [[(7, 7)], "LIVE", "null", 1, 1],
+        "helmet": [[(5, 5)], False],
+        "magic_staff": [[(5, 2)], False],
+        "red": ["null", "DROWNED", "null", 1, 1],
+        "yellow": [[(0, 7)], "LIVE", "null", 1, 1],
+    }
+
+
+def test_Game_drown_scenario_2():
+    """
+    Scenario:
+    Red pick up the Axe then attack Blue
+
+    Expected results:
+    Red is in a new position, with the Axe equipped
+    Blue is dead
+    """
+    pass
+
+
+def test_Game_drown_scenario_3():
+    """
+    Scenario:
+    Red pick up the Axe, Yellow pick up the Dagger, Red attacks Yellow
+
+    Expected results:
+    Yellow is dead, The Dagger is a new position, Red is anew position, the Axe
+    is a new position
+    """
+    pass
