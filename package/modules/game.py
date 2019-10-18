@@ -1,4 +1,4 @@
-from package.modules.knights import Knight, GameItem
+from .knights import Knight, GameItem, KNIGHT_STATUSES
 
 
 class Game:
@@ -18,8 +18,11 @@ class Game:
 
     def _knight_status(self, code):
         knight = self.knights[code]
+        position = [knight.position]
+        if knight.status == KNIGHT_STATUSES["DROWNED"]:
+            position = 'null'
         return [
-            [knight.position],
+            position,
             knight.status,
             knight.item or 'null',
             knight.attack,
@@ -44,3 +47,15 @@ class Game:
             "dagger": self._item_status('D'),
             "axe": self._item_status('A'),
         }
+
+    def execute_move(self, move):
+        chunks = move.split(':')
+        knight_name = chunks[0]
+        direction = chunks[1]
+        knight = self.knights[knight_name]
+        print(move)
+        print(knight.x)
+        print(knight.y)
+        knight.move(direction)
+        print(knight.x)
+        print(knight.y)
