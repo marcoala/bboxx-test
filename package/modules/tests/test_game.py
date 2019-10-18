@@ -74,7 +74,30 @@ def test_Game_drown_scenario_2():
     Red is in a new position, with the Axe equipped
     Blue is dead
     """
-    pass
+    game = Game()
+    game.execute_move('R:S')
+    game.execute_move('R:S')
+    game.execute_move('R:E')
+    game.execute_move('R:E')
+    game.execute_move('R:E')
+    game.execute_move('R:W')
+    game.execute_move('R:W')
+    game.execute_move('R:W')
+    game.execute_move('R:S')
+    game.execute_move('R:S')
+    game.execute_move('R:S')
+    game.execute_move('R:S')
+    game.execute_move('R:S')
+    assert game.get_result() == {
+        "axe": [[(7, 0)], True],
+        "blue": [[(7, 0)], "DEAD", "null", 1, 1],
+        "dagger": [[(2, 5)], False],
+        "green": [[(7, 7)], "LIVE", "null", 1, 1],
+        "helmet": [[(5, 5)], False],
+        "magic_staff": [[(5, 2)], False],
+        "red": [[(7, 0)], "LIVE", "A", 3, 1],
+        "yellow": [[(0, 7)], "LIVE", "null", 1, 1],
+    }
 
 
 def test_Game_drown_scenario_3():

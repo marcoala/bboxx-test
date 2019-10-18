@@ -76,8 +76,9 @@ class Knight(GameObject):
         self.status = KNIGHT_STATUSES["DEAD"]
 
     def equip_item(self, item):
-        self.item = item
-        self.item.equipped = True
+        if not self.item:
+            self.item = item
+            self.item.equipped = True
 
     def drop_item(self):
         if self.item:
