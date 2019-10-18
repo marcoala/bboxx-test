@@ -4,8 +4,8 @@ from package.modules.knights import KNIGHT_STATUSES, Knight, GameItem, fight
 def test_GameItem_creation():
     item = GameItem('M', 5, 2, 1, 1)
     assert item.name == 'M'
-    assert item.x == 5
-    assert item.y == 2
+    assert item.x == 2
+    assert item.y == 5
     assert item.attack == 1
     assert item.defence == 1
 

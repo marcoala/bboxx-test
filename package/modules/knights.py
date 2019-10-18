@@ -12,14 +12,14 @@ class KnightIsDeadError(Exception):
 
 
 class GameObject:
-    def __init__(self, name, x, y):
+    def __init__(self, name, y, x):
         self.name = name
         self.x = x
         self.y = y
 
     @property
     def position(self):
-        return self.x, self.y
+        return self.y, self.x
 
 
 class Knight(GameObject):
@@ -27,8 +27,8 @@ class Knight(GameObject):
     _base_attack = 1
     _base_defence = 1
 
-    def __init__(self, name, x, y):
-        super().__init__(name, x, y)
+    def __init__(self, name, y, x):
+        super().__init__(name, y, x)
         self.status = KNIGHT_STATUSES["LIVE"]
 
     def move(self, direction):
@@ -77,8 +77,8 @@ class Knight(GameObject):
 class GameItem(GameObject):
     equipped = False
 
-    def __init__(self, name, x, y, attack=0, defence=0):
-        super().__init__(name, x, y)
+    def __init__(self, name, y, x, attack=0, defence=0):
+        super().__init__(name, y, x)
         self.attack = attack
         self.defence = defence
 
