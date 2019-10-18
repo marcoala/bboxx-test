@@ -66,12 +66,17 @@ class Knight(GameObject):
 
     def equip_item(self, item):
         self.item = item
+        self.item.equipped = True
 
     def drop_item(self):
-        pass
+        if self.item:
+            self.item.equipped = False
+            self.item = None
 
 
 class GameItem(GameObject):
+    equipped = False
+
     def __init__(self, name, x, y, attack=0, defence=0):
         super().__init__(name, x, y)
         self.attack = attack
